@@ -1,0 +1,15 @@
+﻿body {
+}
+.vehicleSummary {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
+    width: 30%;
+    background-color: antiquewhite;
+    padding: 5px;
+    border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    border: 2px solid #000000;
+    margin-bottom: 2%;
+}

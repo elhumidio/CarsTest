@@ -1,0 +1,127 @@
+﻿@model CarModels.Vehicle
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script>
+
+        $(document).ready(function () {
+     
+
+        $("#txtDeposit").blur(function (event) {
+               let deposit = parseFloat($("#txtDeposit").val());
+        let price = parseFloat($("#txtPrice").val());
+
+            if (deposit < (price * 15 / 100)) {
+                let minimunDeposit = price * 15 / 100;
+                $("#txtDeposit").focus();
+                $("#txtDeposit").notify("Deposit must be at least 15% fo price\n In this case: £ " + minimunDeposit,"warn");
+                
+            }
+            else {
+                $("#txtDeliverydate").focus();
+            }
+              
+         
+          
+        });
+
+    });
+    </script>
+
+}
+
+<div>
+
+
+    @using (Html.BeginForm("Results", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <br />
+        <label for="txtArrFee">Vehicle price</label>
+        <span>£</span>@Html.TextBoxFor(m => m.finantiation.price, new { @placeholder = "Vehicle price", @class = "form-control", type = "number", name = "txtPrice", id = "txtPrice" })
+        @Html.ValidationMessageFor(model => model.finantiation.price)
+        <br />
+        <label for="txtArrFee">Deposit Amount</label>
+        <span>£</span>@Html.TextBoxFor(m => m.finantiation.deposit, new { @placeholder = "Deposit Amount", @class = "form-control", id = "txtDeposit", type = "number", name = "txtDeposit" })
+        @Html.ValidationMessageFor(model => model.finantiation.deposit)
+        <br />
+        <label for="txtDeliverydate">Delivery date</label>
+        @Html.TextBoxFor(m => m.deliveryDate, new { @placeholder = "Delivery date", @class = "form-control", id = "txtDeliverydate", type = "date", name = "txtDeliverydate" })
+        @Html.ValidationMessageFor(model => model.deliveryDate)
+        <br />
+        <label for="txtArrFee">Arrangement Fee</label>
+        <span>£</span>@Html.TextBoxFor(m => m.finantiation.arrangementFee, new { @placeholder = "Arrangement fee", @class = "form-control", id = "txtArrFee", type = "number", name = "txtArrFee" })
+        @Html.ValidationMessageFor(model => model.finantiation.arrangementFee)
+        <br />
+
+        <label for="txtCompletionFee">Completion Fee</label>
+        <span>£</span>@Html.TextBoxFor(m => m.finantiation.completionFee, new { @placeholder = "Completion fee", @class = "form-control", id = "txtCompletionFee", type = "number", name = "txtCompletionFee" })
+        @Html.ValidationMessageFor(model => model.finantiation.completionFee)
+
+        <br />
+        <label for="sctFinanceOpt">Finance Options</label>
+        <select id="sctFinanceOpt" name="sctFinanceOpt">
+            <option value="12">12 Months</option>
+            <option value="24">24 Months</option>
+            <option value="36">36 Months</option>
+        </select>
+
+
+
+
+
+        <fieldset>
+            <legend style="font-size:small">Press button "Send" to see results</legend>
+            <input type="submit" value="Send" id="btnViewResults">
+        </fieldset>
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<style>
+    .form-control {
+        width: 25% !important;
+    }
+
+    ul {
+        width: 500px;
+    }
+
+    .validation-summary-errors {
+        width: 500px;
+        border: 1px solid red;
+        padding-bottom: 10px;
+        margin-bottom: 5%;
+    }
+
+    .fieldsetEsp {
+        width: 1000px !important;
+    }
+</style>
+
+
+<script>
+
+    
+
+
+</script>

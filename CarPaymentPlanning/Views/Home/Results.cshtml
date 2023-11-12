@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CarModels.MonthlyPayment>
+
+@{
+    ViewData["Title"] = "ResultsAction";
+}
+
+<h2>Payments Schema</h2>
+
+<fieldset>
+    <legend>Summary</legend>
+    <div class="vehicleSummary">
+        <b>Price:</b> £&nbsp;@ViewBag.price.<br />
+        <b>Deposit:</b> £&nbsp;@ViewBag.deposit.<br />
+        <b>Arrangement Fee:</b> £&nbsp;@ViewBag.arrangementFee.<br />
+        <b>Completion Fee:</b> &nbsp;@ViewBag.completionFee.<br />
+        <b>Delivery date:</b> £&nbsp; @ViewBag.deliveryDate.<br />
+        <b>Payments:</b> @ViewBag.payments.
+    </div>
+
+</fieldset>
+<legend>Payments detail</legend>
+<div></div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Due date
+            </th>
+            <th>
+                Monthly payment
+            </th>
+            <th>
+                Remaining Debt
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentDate)
+            </td>
+            <td>
+                <span>£</span>&nbsp; @Html.DisplayFor(modelItem => item.monthPayment)
+            </td>
+            <td>
+                <span>£</span>&nbsp; @Html.DisplayFor(modelItem => item.DueAmount)
+
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
